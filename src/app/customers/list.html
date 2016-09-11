@@ -28,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="customer in vm.data">
+    <tr ng-repeat="customer in vm.data" ng-click="vm.open(customer._id)">
       <td>{{ customer.givenName }}</td>
       <td>{{ customer.telephones }}</td>
       <td>{{ customer.email }}</td>

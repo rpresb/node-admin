@@ -11,6 +11,7 @@
     var vm = this;
 
     vm.goTo = goTo;
+    vm.open = open;
 
     CustomerService.list()
       .then(function(response) {
@@ -24,6 +25,10 @@
     function goTo(stateName) {
       $state.go(stateName);
       vm.data = {};
+    }
+    function open(id) {
+      console.log(id);
+      $state.go('app.customer', { id: id });
     }
 
     return vm;

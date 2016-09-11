@@ -19,7 +19,7 @@
       }
     })
     .state('app.customer', {
-      url: '/customer',
+      url: '/customer/:id?',
       controller: 'CustomerController',
       controllerAs: 'vm',
       templateUrl: '/customers/form.html',

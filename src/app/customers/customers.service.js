@@ -21,7 +21,7 @@
       save: function(data) {
         var promise;
         if (data._id) {
-          promise = HTTPService.update('/api/customers/' + data._id, data)
+          promise = HTTPService.put('/api/customers/' + data._id, data)
         } else {
           promise = HTTPService.post('/api/customers', data);
         }

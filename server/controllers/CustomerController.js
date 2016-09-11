@@ -20,7 +20,7 @@ let CustomerController = {
         return next(err);
       }
 
-      response.json({ items: result });
+      response.json(result);
     });
   },
   create: function(request, response, next) {
@@ -35,7 +35,8 @@ let CustomerController = {
       });
   },
   update: function(request, response, next) {
-    repository.update({ _id: _id }, request.body).exec(function(err, result) {
+    let _id = request.params._id;
+    repository.update({ _id: _id }, { $set: request.body }).exec(function(err, result) {
       if (err) {
         return next(err);
       }
@@ -43,6 +44,7 @@ let CustomerController = {
     });
   },
   remove: function(request, response, next) {
+    let _id = request.params._id;
     repository.remove({ _id: _id }).exec(function(err, result) {
       if (err) {
         return next(err);
