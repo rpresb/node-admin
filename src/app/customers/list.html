@@ -1,4 +1,4 @@
-<form name="vm.searchCustomerForm" role="search" ng-submit="vm.searchCustomer()" novalidate>
+<form name="vm.searchCustomerForm" class="search-form" role="search" ng-submit="vm.searchCustomer(vm.q)" novalidate>
     <div class="input-group">
         <input
           type="text"
@@ -6,7 +6,7 @@
           placeholder="Telefone, email ou nome"
           autocomplete="off"
           name="search"
-          ng-model="vm.user"
+          ng-model="vm.q"
           class="form-control">
 
         <span class="input-group-btn">
@@ -28,7 +28,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="customer in vm.data" ng-click="vm.open(customer._id)">
+    <tr class="pointer" ng-repeat="customer in vm.data" ng-click="vm.open(customer._id)">
       <td>{{ customer.givenName }}</td>
       <td>{{ customer.telephones }}</td>
       <td>{{ customer.email }}</td>

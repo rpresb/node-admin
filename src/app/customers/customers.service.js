@@ -8,9 +8,9 @@
   /*@ngInject*/
   function CustomerService(HTTPService) {
     var service = {
-      list: function() {
+      list: function(params) {
         return HTTPService
-          .get('/api/customers')
+          .get('/api/customers', params)
           .then(HTTPService.handleError);
       },
       byId: function(id) {

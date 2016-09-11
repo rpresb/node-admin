@@ -16,14 +16,9 @@
     };
     vm.save = save;
 
-    CustomerService.byId(id)
-      .then(function(response) {
-        vm.data = response.data;
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-
+    if (id) {
+      _byId(id)
+    }
 
     function save(data) {
       CustomerService.save(data)
@@ -33,6 +28,19 @@
         .catch(function(err) {
           console.log(err);
         })
+    }
+
+    /**
+     * private
+     */
+    function _byId(id) {
+      CustomerService.byId(id)
+        .then(function(response) {
+          vm.data = response.data;
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
     }
 
     return vm;

@@ -22,3 +22,5 @@ fieldset { border: none; padding: 0; margin: 0; }
 #view {
   overflow: hidden;
 }
+
+.pointer { cursor: pointer; }

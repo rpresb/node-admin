@@ -4,12 +4,19 @@
   display: block;
 }
 
-.sidebar {
-  width: 200px;
-  height: 100%;
-  position: relative;
+.sidebar-wrapper {
   float: left;
+  width: 200px;
   margin-right: 20px;
+  min-height: 100%;
+  position: relative;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 200px;
   background-color: #722872;
 }
 

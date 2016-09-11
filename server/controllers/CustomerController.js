@@ -5,7 +5,22 @@ let repository = require('../repositories/CustomerRepository');
 
 let CustomerController = {
   list: function(request, response, next) {
-    repository.find({}).exec(function(err, result) {
+    let query = {};
+
+    if (request.query.q) {
+      let search = new RegExp(request.query.q, 'i');
+      query = {
+        $or: [
+          { givenName: search },
+          { telephones: search },
+          { email: search },
+          { 'address.postalCode': search }
+        ]
+      };
+    }
+    debug('query', query);
+
+    repository.find(query).exec(function(err, result) {
       if (err) {
         return next(err);
       }

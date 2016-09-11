@@ -27,26 +27,15 @@
           ng-minlength="3"
           maxlength="50">
     </div>
-    <div class="col-md-6 form-group">
-      <label>Telefone 1</label>
+    <div class="col-md-6 form-group" ng-repeat="n in [1,2]">
+      <label>Telefone {{ n }}</label>
       <input
           type="tel"
           name="telephones[]"
           class="form-control"
           size="11"
           autocomplete="off"
-          ng-model="vm.data.telephones"
-          maxlength="11">
-    </div>
-    <div class="col-md-6 form-group">
-      <label>Telefone 2</label>
-      <input
-          type="tel"
-          name="telephones[]"
-          class="form-control"
-          size="11"
-          autocomplete="off"
-          ng-model="vm.data.telephones"
+          ng-model="vm.data.telephones[n - 1]"
           maxlength="11">
     </div>
     <div class="col-md-6 form-group">

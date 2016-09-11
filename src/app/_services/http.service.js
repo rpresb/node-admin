@@ -6,11 +6,11 @@
   .factory('HTTPService', HTTPService);
 
   /*@ngInject*/
-  function HTTPService($http) {
+  function HTTPService($http, $httpParamSerializer) {
     var service = {
-      get: function(url) {
+      get: function(url, params) {
         var req = {
-          url: url,
+          url: url + '?' + $httpParamSerializer(params),
           method: 'GET'
         };
         return $http(req).then(_handleResponseData);
