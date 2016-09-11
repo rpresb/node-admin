@@ -1,6 +1,6 @@
-<form name="vm.customerForm" class="row" ng-submit="vm.save(vm.data)">
-  <fieldset>
-    <div class="col-md-6 form-group">
+<form name="vm.customerForm" ng-submit="vm.save(vm.data)">
+  <fieldset class="row">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Nome *</label>
       <input
           type="text"
@@ -14,7 +14,7 @@
           ng-minlength="3"
           maxlength="50">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Sobrenome</label>
       <input
           type="text"
@@ -27,7 +27,7 @@
           ng-minlength="3"
           maxlength="50">
     </div>
-    <div class="col-md-6 form-group" ng-repeat="n in [1,2]">
+    <div class="col-md-6 col-sm-6 form-group" ng-repeat="n in [1,2]">
       <label>Telefone {{ n }}</label>
       <input
           type="tel"
@@ -35,10 +35,11 @@
           class="form-control"
           size="11"
           autocomplete="off"
+          ui-br-phone-number
           ng-model="vm.data.telephones[n - 1]"
-          maxlength="11">
+          maxlength="15">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Apelido</label>
       <input
           type="text"
@@ -51,7 +52,7 @@
           ng-minlength="3"
           maxlength="50">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Sexo</label>
       <select
           name="gender"
@@ -61,7 +62,7 @@
           <option value="M">Masculino</option>
       </select>
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>E-mail</label>
       <input
           type="email"
@@ -74,19 +75,20 @@
           ng-minlength="3"
           maxlength="100">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Data de Nascimento</label>
       <input
-          type="date"
+          type="text"
           name="birthDate"
           class="form-control"
           size="10"
           autocomplete="off"
+          ui-date-mask
           ng-model="vm.data.birthDate"
           ng-minlength="3"
           maxlength="10">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Rua</label>
       <input
           type="text"
@@ -98,7 +100,7 @@
           ng-minlength="3"
           maxlength="100">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Número</label>
       <input
           type="tel"
@@ -108,9 +110,10 @@
           autocomplete="off"
           ng-model="vm.data.address.number"
           ng-minlength="3"
+          placeholder="Ex: 206 ap 51A"
           maxlength="100">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Estado</label>
       <select
           name="addressRegion"
@@ -147,7 +150,7 @@
           <option value="TO">Tocantins</option>
       </select>
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Cidade</label>
       <input
           type="text"
@@ -160,7 +163,7 @@
           value="São Paulo"
           maxlength="100">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Bairro</label>
       <input
           type="text"
@@ -172,7 +175,7 @@
           ng-minlength="3"
           maxlength="100">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>CEP</label>
       <input
           type="text"
@@ -180,11 +183,12 @@
           class="form-control"
           size="8"
           autocomplete="off"
+          ui-br-cep-mask
           ng-model="vm.data.address.postalCode"
           ng-minlength="8"
           maxlength="8">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Complemento</label>
       <input
           type="text"
@@ -195,7 +199,7 @@
           ng-model="vm.data.address.complement"
           maxlength="50">
     </div>
-    <div class="col-md-6 form-group">
+    <div class="col-md-6 col-sm-6 form-group">
       <label>Referência</label>
       <input
           type="text"
@@ -206,8 +210,8 @@
           ng-model="vm.data.address.referencePoint"
           maxlength="50">
     </div>
-
-
+  </fieldset>
+  <fieldset class="row">
     <div class="col-md-12">
       <input type="submit"
             ng-disabled="vm.customerForm.$invalid"

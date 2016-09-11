@@ -10,6 +10,7 @@
 
       'ui.router',
       'ui.bootstrap',
+      'ui.utils.masks',
 
       'app.customers',
       'app.dashboard',

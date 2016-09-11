@@ -23,7 +23,13 @@
     function save(data) {
       CustomerService.save(data)
         .then(function(response) {
-          console.log(response.data);
+          var data = response.data;
+
+          console.log(data);
+
+          if (response.status === 201) {
+            $state.go($state.current.name, { id: data._id });
+          }
         })
         .catch(function(err) {
           console.log(err);
