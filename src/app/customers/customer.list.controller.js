@@ -7,11 +7,12 @@
 
 
   /*@ngInject*/
-  function CustomerListController($state, $controller, CustomerService) {
+  function CustomerListController($state, $controller, RestService) {
     var vm = this;
 
+    RestService.endpoint = 'customers';
     angular.extend(vm, $controller('GenericListController', {
-        vm: vm, $state: $state, service: CustomerService, module: 'customer'
+        vm: vm, $state: $state, service: RestService, module: 'customer'
       })
     );
 

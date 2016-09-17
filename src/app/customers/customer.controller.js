@@ -7,9 +7,11 @@
 
 
   /*@ngInject*/
-  function CustomerController($state, CustomerService, PostalCodeService, NotificationService) {
+  function CustomerController($state, RestService, PostalCodeService, NotificationService) {
     var vm = this;
     var id = $state.params.id;
+
+    RestService.endpoint = 'customers';
 
     vm.data = {
       address: { addressRegion: 'SP' }
@@ -22,7 +24,7 @@
     }
 
     function save(data) {
-      CustomerService.save(data)
+      RestService.save(data)
         .then(function(response) {
           var data = response.data;
 
@@ -56,7 +58,7 @@
      * private
      */
     function _byId(id) {
-      CustomerService.byId(id)
+      RestService.byId(id)
         .then(function(response) {
           vm.data = response.data;
 

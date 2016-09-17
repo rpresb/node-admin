@@ -7,9 +7,11 @@
 
 
   /*@ngInject*/
-  function ProductController($state, ProductService, NotificationService) {
+  function ProductController($state, RestService, NotificationService) {
     var vm = this;
     var id = $state.params.id;
+
+    RestService.endpoint = 'product';
 
     vm.data = {};
     vm.save = save;
@@ -19,7 +21,7 @@
     }
 
     function save(data) {
-      ProductService.save(data)
+      RestService.save(data)
         .then(function(response) {
           var data = response.data;
 
@@ -36,7 +38,7 @@
      * private
      */
     function _byId(id) {
-      ProductService.byId(id)
+      RestService.byId(id)
         .then(function(response) {
           vm.data = response.data;
         })
