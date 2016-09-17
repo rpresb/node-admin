@@ -8,11 +8,13 @@
   /*@ngInject*/
   function HTTPService($http, $httpParamSerializer) {
     var service = {
-      get: function(url, params) {
+      get: function(url, params, config) {
         var req = {
-          url: url + '?' + $httpParamSerializer(params),
+          url: url,
+          params: params || {},
           method: 'GET'
         };
+        angular.extend(req, config);
         return $http(req).then(_handleResponseData);
       },
       post: function post(url, data, headers) {

@@ -6,6 +6,6 @@ router.get('/', function(request, response, next) {
   response.send('PONG');
 })
 router.use('/customers', require('./customers'));
-router.use('/postalcode', require('./postalcode'));
+router.use('/postalcodes', require('./postalcodes'));
 
 module.exports = router;

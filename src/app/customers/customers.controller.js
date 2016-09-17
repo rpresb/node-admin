@@ -7,7 +7,7 @@
 
 
   /*@ngInject*/
-  function CustomerController($state, CustomerService) {
+  function CustomerController($state, CustomerService, PostalCodeService) {
     var vm = this;
     var id = $state.params.id;
 
@@ -15,6 +15,7 @@
       address: { addressRegion: 'SP' }
     };
     vm.save = save;
+    vm.findByPostalCode = findByPostalCode;
 
     if (id) {
       _byId(id)
@@ -36,6 +37,19 @@
         })
     }
 
+    function findByPostalCode(postalCode) {
+      PostalCodeService.findByPostalCode(postalCode)
+        .then(function(response) {
+          var data = response.data;
+
+          vm.data.address = data;
+          vm.data.address.postalCode = postalCode;
+          vm.disableAddressFields = true;
+        })
+        .catch(function() {
+          vm.disableAddressFields = false;
+        })
+    }
     /**
      * private
      */
