@@ -11,7 +11,7 @@
     var vm = this;
     var id = $state.params.id;
 
-    RestService.endpoint = 'product';
+    RestService.endpoint = 'products';
 
     vm.data = {};
     vm.save = save;

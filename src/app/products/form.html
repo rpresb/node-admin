@@ -14,6 +14,21 @@
           ng-minlength="3"
           maxlength="50">
     </div>
+    <div class="col-md-6 col-sm-6 form-group">
+      <label>Preço *</label>
+      <input
+          type="tel"
+          name="name"
+          class="form-control"
+          placeholder="Preço do Produto"
+          size="50"
+          autocomplete="off"
+          required
+          ng-model="vm.data.price"
+          ui-money-mask
+          maxlength="50">
+    </div>
+
   </fieldset>
   <fieldset class="row">
     <div class="col-md-12">

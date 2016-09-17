@@ -4,7 +4,7 @@ let mongoose = require('../config/MongooseConfig');
 
 
 let OrderSchema = mongoose.Schema({
-  _customerId: { type: mongoose.types.ObjectId },
+  _customerId: { type: mongoose.Schema.Types.ObjectId },
   items: [{
     name: { type: String },
     price: { type: Number },
