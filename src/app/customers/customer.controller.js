@@ -26,8 +26,6 @@
         .then(function(response) {
           var data = response.data;
 
-          console.log(data);
-
           if (response.status === 201) {
             $state.go($state.current.name, { id: data._id });
           }
@@ -38,13 +36,16 @@
     }
 
     function findByPostalCode(postalCode) {
+      if (!postalCode || postalCode.length < 8) {
+        return false;
+      }
       PostalCodeService.findByPostalCode(postalCode)
         .then(function(response) {
           var data = response.data;
 
           vm.data.address = data;
           vm.data.address.postalCode = postalCode;
-          vm.disableAddressFields = true;
+          vm.disableAddressFields = !!data.streetAddress;
         })
         .catch(function() {
           vm.disableAddressFields = false;
