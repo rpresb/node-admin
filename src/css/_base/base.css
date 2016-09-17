@@ -42,6 +42,7 @@ pre {
 
 .content {
   overflow: hidden;
+  max-width: 800px;
 }
 
 .pointer { cursor: pointer; }

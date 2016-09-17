@@ -1,0 +1,38 @@
+<form name="vm.searchOrderForm" class="search-form" role="search" ng-submit="vm.searchAction(vm.q)" novalidate>
+    <div class="input-group">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Nome do produto"
+          autocomplete="off"
+          name="search"
+          ng-model="vm.q"
+          class="form-control">
+
+        <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit" ng-disabled="vm.searchOrderForm.$invalid">
+                <i class="fa fa-search"></i>
+            </button>
+        </span>
+    </div>
+</form>
+
+<button class="btn btn-secondary" ng-click="vm.open()">+ Novo</button>
+
+<p ng-if="!vm.data.items">Nenhum produto encontrado</p>
+
+<table class="table" ng-if="vm.data.items">
+  <thead>
+    <tr>
+      <td>Nome</td>
+      <td>Preço</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="pointer" ng-repeat="order in vm.data.items" ng-click="vm.open(order._id)">
+      <td>{{ order.name }}</td>
+      <td>{{ order.price }}</td>
+    </tr>
+  </tbody>
+</table>
+

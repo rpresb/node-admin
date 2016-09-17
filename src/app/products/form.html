@@ -18,7 +18,7 @@
       <label>Preço *</label>
       <input
           type="tel"
-          name="name"
+          name="price"
           class="form-control"
           placeholder="Preço do Produto"
           size="50"
@@ -27,6 +27,14 @@
           ng-model="vm.data.price"
           ui-money-mask
           maxlength="50">
+    </div>
+    <div class="col-md-6 col-sm-6 form-group">
+      <label>Brinde</label>
+      <input
+          type="checkbox"
+          name="gift"
+          class="form-control"
+          ng-model="vm.data.gift">
     </div>
 
   </fieldset>

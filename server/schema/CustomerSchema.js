@@ -11,6 +11,7 @@ let CustomerSchema = mongoose.Schema({
   email: { type: String, lowercase: true },
   telephones: [{ type: String }],
   birthDate: { type: String },
+  createdAt: { type: Date, default: Date.now },
   address: {
     streetAddress: { type: String },
     number: { type: Number },

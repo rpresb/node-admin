@@ -1,0 +1,127 @@
+<form name="vm.productForm" ng-submit="vm.save(vm.data)">
+  <fieldset class="row">
+    <legend class="col-md-12 col-sm-12">Pedido</legend>
+    <div class="col-md-12 col-sm-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th width="100">Quantidade</th>
+            <th width="50">Valor unitário</th>
+            <th width="50">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in vm.data.items">
+            <td><label for="item-{{ $index }}">{{ product.name }}</label></td>
+            <td>
+              <input type="tel"
+                id="item-{{ $index }}"
+                ng-model="product.quantity"
+                maxlength="2"
+                ui-number-mask="0"
+                class="form-control" />
+            </td>
+            <td>{{ product.price }}</td>
+            <td>{{ (product.quantity || 0) * product.price }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><b>Total:</b></td>
+            <td>{{ vm.data.items.length }}</td>
+            <td></td>
+            <td>{{ vm.data.payment.total }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </fieldset>
+
+  <fieldset class="row">
+    <legend class="col-md-12 col-sm-12">Brinde</legend>
+    <div class="col-md-12 col-sm-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th width="100">Quantidade</th>
+            <th width="50">Valor unitário</th>
+            <th width="50">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in vm.data.gifts | filter:{ gift: true }">
+            <td><label for="gift-{{ $index }}">{{ product.name }}</label></td>
+            <td>
+              <input type="tel"
+                id="gift-{{ $index }}"
+                ng-model="product.quantity"
+                maxlength="2"
+                ui-number-mask="0"
+                class="form-control" />
+            </td>
+            <td>{{ product.price }}</td>
+            <td>{{ (product.quantity || 0) * product.price }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td><b>Total:</b></td>
+            <td>{{ vm.data.items.length }}</td>
+            <td></td>
+            <td>{{ vm.data.payment.total }}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </fieldset>
+
+  <fieldset class="row">
+    <div class="col-md-4 col-sm-4 form-group">
+      <label>Data de entrega</label>
+      <input
+          type="text"
+          class="form-control"
+          size="50"
+          autocomplete="off"
+          ng-model="vm.data.delivery.date"
+          ng-minlength="3"
+          uib-datepicker-popup="dd/MM/yyyy"
+          maxlength="50">
+    </div>
+    <div class="col-md-4 col-sm-4 form-group">
+      <label>Taxa de entrega</label>
+      <input
+          type="tel"
+          class="form-control"
+          size="50"
+          autocomplete="off"
+          ng-model="vm.data.delivery.price"
+          ng-minlength="3"
+          ui-money-mask
+          value="5.0"
+          max="100"
+          maxlength="9">
+    </div>
+    <div class="col-md-4 col-sm-4 form-group">
+      <label>Entregador</label>
+      <select class="form-control" ng-model="vm.data.delivery.courier">
+          <option value="Eduardo">Eduardo</option>
+          <option value="Kleber">Kleber</option>
+          <option value="Edson">Edson</option>
+          <option value="Carlos">Carlos</option>
+          <option value="William">William</option>
+          <option value="Juliana">Juliana</option>
+      </select>
+    </div>
+  </fieldset>
+  <fieldset class="row">
+    <div class="col-md-12">
+      <input type="submit"
+            ng-disabled="vm.productForm.$invalid"
+            class="btn btn-primary"
+            value="Salvar" />
+    </div>
+  </fieldset>
+</form>

@@ -5,6 +5,10 @@ let mongoose = require('../config/MongooseConfig');
 
 let OrderSchema = mongoose.Schema({
   _customerId: { type: mongoose.Schema.Types.ObjectId },
+  customer: {
+    givenName: { type: String }
+  },
+  createdAt: { type: Date, default: Date.now },
   items: [{
     name: { type: String },
     price: { type: Number },

@@ -6,6 +6,7 @@ let repository = require('../repository/ProductRepository');
 let ProductController = {
   list: function(request, response, next) {
     let query = {};
+    let attr = request.query.attr;
 
     if (request.query.q) {
       let search = new RegExp(request.query.q, 'i');
@@ -21,15 +22,19 @@ let ProductController = {
       if (err) {
         return next(err);
       }
-
-      response.json({
+      let data = {
         items: result,
         _metadata: {
           size: (result || []).length,
           total: 500,
           page: 1
         }
-      });
+      };
+      if (attr === 'items') {
+        data = data.items;
+      }
+
+      response.json(data);
     });
   },
   byId: function(request, response, next) {
