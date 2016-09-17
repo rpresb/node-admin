@@ -1,7 +1,7 @@
 'use strict';
 
 let debug = require('debug')('delivery-admin:controller:postalcode');
-let repository = require('../repositories/PostalCodeRepository');
+let repository = require('../repository/PostalCodeRepository');
 
 let PostalCodeController = {
   findByPostalCode: function(request, response, next) {

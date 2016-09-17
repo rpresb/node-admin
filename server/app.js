@@ -8,7 +8,7 @@ let express     = require('express'),
     debug       = require('debug')('delivery-admin:app'),
     app         = express();
 
-let AppController = require('./controllers/AppController');
+let AppController = require('./controller/AppController');
 
 
 app.set('json replacer', null);
@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 
 app.use(express.static(APP_ROOT + '/public/'));
-app.use(require('./routes'));
+app.use(require('./router'));
 
 
 app.use(AppController.notFound);

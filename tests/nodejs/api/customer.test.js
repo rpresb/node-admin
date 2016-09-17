@@ -6,7 +6,7 @@ const USER = {
   email: 'jane@doe.com'
 };
 
-let mongoose = require('../../../server/configs/MongooseConfig');
+let mongoose = require('../../../server/config/MongooseConfig');
 
 describe('Customer', function() {
   beforeEach(function() {

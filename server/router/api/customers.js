@@ -1,7 +1,7 @@
 'use strict';
 
 let router              = require('express').Router(),
-    CustomerController  = require('../../controllers/CustomerController');
+    CustomerController  = require('../../controller/CustomerController');
 
 
 router.get('/', CustomerController.list);

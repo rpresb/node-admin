@@ -1,6 +1,6 @@
 'use strict';
 
-let mongoose = require('../configs/MongooseConfig');
+let mongoose = require('../config/MongooseConfig');
 
 
 let CustomerSchema = mongoose.Schema({

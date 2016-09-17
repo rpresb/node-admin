@@ -1,7 +1,7 @@
 'use strict';
 
 let router              = require('express').Router(),
-    PostalCodeController  = require('../../controllers/PostalCodeController');
+    PostalCodeController  = require('../../controller/PostalCodeController');
 
 
 router.get('/:postalCode', PostalCodeController.findByPostalCode);

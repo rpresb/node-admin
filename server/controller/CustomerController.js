@@ -1,7 +1,7 @@
 'use strict';
 
 let debug = require('debug')('delivery-admin:controller:customer');
-let repository = require('../repositories/CustomerRepository');
+let repository = require('../repository/CustomerRepository');
 
 let CustomerController = {
   list: function(request, response, next) {

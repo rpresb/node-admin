@@ -54,7 +54,7 @@ gulp.task('js:app', ['js:template'], function() {
 
 
 gulp.task('js:template', function() {
-  return gulp.src('src/app/{_layout,_templates,customers,dashboard,orders,products}/**/*.html')
+  return gulp.src('src/app/{_layout,_template,customers,dashboard,orders,products}/**/*.html')
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(templateCache({
       root: '/',
