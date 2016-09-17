@@ -32,9 +32,7 @@
 
           NotificationService.success({ title: 'Cliente', message: 'Salvo com sucesso' });
         })
-        .catch(function(err) {
-          console.log(err);
-        })
+        .catch(NotificationService.err);
     }
 
     function findByPostalCode(postalCode) {
@@ -64,9 +62,7 @@
 
           vm.disableAddressFields = !!(vm.data.address && vm.data.address.streetAddress);
         })
-        .catch(function(err) {
-          console.log(err);
-        });
+        .catch(NotificationService.err);
     }
 
     return vm;

@@ -1,16 +1,16 @@
-<form name="vm.searchCustomerForm" class="search-form" role="search" ng-submit="vm.searchAction(vm.q)" novalidate>
+<form name="vm.searchProductForm" class="search-form" role="search" ng-submit="vm.searchAction(vm.q)" novalidate>
     <div class="input-group">
         <input
           type="text"
           id="search-input"
-          placeholder="Telefone, email ou nome"
+          placeholder="Nome do produto"
           autocomplete="off"
           name="search"
           ng-model="vm.q"
           class="form-control">
 
         <span class="input-group-btn">
-            <button class="btn btn-primary" type="submit" ng-disabled="vm.searchCustomerForm.$invalid">
+            <button class="btn btn-primary" type="submit" ng-disabled="vm.searchProductForm.$invalid">
                 <i class="fa fa-search"></i>
             </button>
         </span>
@@ -19,21 +19,19 @@
 
 <button class="btn btn-secondary" ng-click="vm.open()">+ Novo</button>
 
-<p ng-if="!vm.data.items">Nenhum cliente encontrado</p>
+<p ng-if="!vm.data.items">Nenhum produto encontrado</p>
 
 <table class="table" ng-if="vm.data.items">
   <thead>
     <tr>
       <td>Nome</td>
-      <td>Telefones</td>
-      <td>Email</td>
+      <td>Preço</td>
     </tr>
   </thead>
   <tbody>
-    <tr class="pointer" ng-repeat="customer in vm.data.items" ng-click="vm.open(customer._id)">
-      <td>{{ customer.givenName }}</td>
-      <td>{{ customer.telephones }}</td>
-      <td>{{ customer.email }}</td>
+    <tr class="pointer" ng-repeat="product in vm.data.items" ng-click="vm.open(product._id)">
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
     </tr>
   </tbody>
 </table>

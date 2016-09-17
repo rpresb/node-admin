@@ -15,7 +15,7 @@
       controllerAs: 'vm',
       templateUrl: '/products/list.html',
       data : {
-        title: 'Lista de Clientes'
+        title: 'Lista de Produtos'
       }
     })
     .state('app.product', {
@@ -24,7 +24,7 @@
       controllerAs: 'vm',
       templateUrl: '/products/form.html',
       data : {
-        title: 'Cadastro de Cliente'
+        title: 'Cadastro de Produto'
       }
     });
   }

@@ -12,6 +12,7 @@
       'ui.bootstrap',
       'ui.utils.masks',
 
+      'app.generic',
       'app.customers',
       'app.dashboard',
       'app.orders',

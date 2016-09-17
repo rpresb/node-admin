@@ -1,0 +1,26 @@
+<form name="vm.productForm" ng-submit="vm.save(vm.data)">
+  <fieldset class="row">
+    <div class="col-md-6 col-sm-6 form-group">
+      <label>Nome *</label>
+      <input
+          type="text"
+          name="name"
+          class="form-control"
+          placeholder="Nome do Produto"
+          size="50"
+          autocomplete="off"
+          required
+          ng-model="vm.data.name"
+          ng-minlength="3"
+          maxlength="50">
+    </div>
+  </fieldset>
+  <fieldset class="row">
+    <div class="col-md-12">
+      <input type="submit"
+            ng-disabled="vm.productForm.$invalid"
+            class="btn btn-primary"
+            value="Salvar" />
+    </div>
+  </fieldset>
+</form>
