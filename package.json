@@ -4,7 +4,8 @@
   "description": "",
   "main": "server/bin/www",
   "scripts": {
-    "start": "npm-run-all --parallel server gulp-watch karma",
+    "start": "npm-run-all --parallel server gulp gulp-watch karma",
+    "gulp": "gulp",
     "gulp-watch": "gulp watch",
     "karma": "echo ''",
     "server": "export DEBUG=delivery-admin:*; nodemon ./server/bin/www",
@@ -47,7 +48,7 @@
         "main": ["./css/font-awesome.css", "./fonts/*"]
       },
       "bootstrap": {
-        "main": ["dist/css/bootstrap.min.css"]
+        "main": ["dist/css/bootstrap.min.css", "dist/js/bootstrap.min.js"]
       }
     }
   }

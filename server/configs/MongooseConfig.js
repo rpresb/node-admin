@@ -19,6 +19,8 @@ function _connection(vars) {
 
 mongoose.Promise = require('bluebird');
 mongoose.connect(_connection(process.env));
+mongoose.set('debug', true);
+
 let db = mongoose.connection;
 /* istanbul ignore next */
 db.on('error', function(err) {

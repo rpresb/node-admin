@@ -9,19 +9,15 @@
   /*@ngInject*/
   function CustomerListController($state, CustomerService) {
     var vm = this;
-    var q = $state.params.q;
-    vm.q = q;
+    vm.q = $state.params.q;
 
-    vm.goTo = goTo;
     vm.open = open;
     vm.searchCustomer = searchCustomer;
 
-    _list({ q: q });
+    vm.currentPage = 1;
 
-    function goTo(stateName) {
-      $state.go(stateName);
-      vm.data = {};
-    }
+    _list({ q: vm.q });
+
     function open(id) {
       $state.go('app.customer', { id: id });
     }
@@ -36,7 +32,7 @@
     function _list(query) {
       CustomerService.list(query)
         .then(function(response) {
-          vm.data = response.data.items;
+          vm.data = response.data;
         })
         .catch(function(err) {
           console.log(err);

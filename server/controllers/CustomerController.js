@@ -25,7 +25,14 @@ let CustomerController = {
         return next(err);
       }
 
-      response.json({ items: result });
+      response.json({
+        items: result,
+        _metadata: {
+          size: (result || []).length,
+          total: 500,
+          page: 1
+        }
+      });
     });
   },
   byId: function(request, response, next) {

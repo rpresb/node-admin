@@ -7,7 +7,7 @@
 
 
   /*@ngInject*/
-  function config ($stateProvider, $httpProvider, $urlRouterProvider, $compileProvider) {
+  function config ($stateProvider) {
     $stateProvider
     .state('app.customers', {
       url: '/customers?q?',

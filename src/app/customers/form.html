@@ -88,6 +88,22 @@
           ng-minlength="3"
           maxlength="10">
     </div>
+  </fieldset>
+  <fieldset class="row">
+    <legend class="col-md-12 col-sm-12">Endereço de entrega</legend>
+    <div class="col-md-6 col-sm-6 form-group">
+      <label>CEP</label>
+      <input
+          type="text"
+          name="address[postalCode]"
+          class="form-control"
+          size="9"
+          autocomplete="off"
+          ui-br-cep-mask
+          ng-model="vm.data.address.postalCode"
+          ng-minlength="9"
+          maxlength="9">
+    </div>
     <div class="col-md-6 col-sm-6 form-group">
       <label>Rua</label>
       <input
@@ -176,19 +192,6 @@
           maxlength="100">
     </div>
     <div class="col-md-6 col-sm-6 form-group">
-      <label>CEP</label>
-      <input
-          type="text"
-          name="address[postalCode]"
-          class="form-control"
-          size="8"
-          autocomplete="off"
-          ui-br-cep-mask
-          ng-model="vm.data.address.postalCode"
-          ng-minlength="8"
-          maxlength="8">
-    </div>
-    <div class="col-md-6 col-sm-6 form-group">
       <label>Complemento</label>
       <input
           type="text"
@@ -212,6 +215,9 @@
     </div>
   </fieldset>
   <fieldset class="row">
+    <pre>
+      {{ vm.customerForm.$error }}
+    </pre>
     <div class="col-md-12">
       <input type="submit"
             ng-disabled="vm.customerForm.$invalid"

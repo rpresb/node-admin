@@ -19,7 +19,7 @@ let CustomerSchema = mongoose.Schema({
     referencePoint: { type: String },
     addressLocality: { type: String },
     addressRegion: { type: String },
-    postalCode: { type: String, maxlength: 8 }
+    postalCode: { type: String, maxlength: 9 }
   }
 });
 
