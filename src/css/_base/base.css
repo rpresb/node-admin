@@ -40,7 +40,7 @@ pre {
   margin: 0 15px;
 }
 
-#view {
+.content {
   overflow: hidden;
 }
 

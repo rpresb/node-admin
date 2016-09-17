@@ -7,7 +7,7 @@
 
 
   /*@ngInject*/
-  function CustomerController($state, CustomerService, PostalCodeService) {
+  function CustomerController($state, CustomerService, PostalCodeService, NotificationService) {
     var vm = this;
     var id = $state.params.id;
 
@@ -29,6 +29,8 @@
           if (response.status === 201) {
             $state.go($state.current.name, { id: data._id });
           }
+
+          NotificationService.success({ title: 'Cliente', message: 'Salvo com sucesso' });
         })
         .catch(function(err) {
           console.log(err);
@@ -37,6 +39,7 @@
 
     function findByPostalCode(postalCode) {
       if (!postalCode || postalCode.length < 8) {
+        vm.disableAddressFields = false;
         return false;
       }
       PostalCodeService.findByPostalCode(postalCode)
@@ -58,6 +61,8 @@
       CustomerService.byId(id)
         .then(function(response) {
           vm.data = response.data;
+
+          vm.disableAddressFields = !!(vm.data.address && vm.data.address.streetAddress);
         })
         .catch(function(err) {
           console.log(err);

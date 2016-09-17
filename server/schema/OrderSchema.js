@@ -25,6 +25,10 @@ let OrderSchema = mongoose.Schema({
     total: { type: Number },
     paymentType: { type: String }
   },
+  origin: {
+    _externalId: { type: String },
+    name: { type: String }
+  },
   shippingAddress: {
     streetAddress: { type: String },
     number: { type: Number },
@@ -33,7 +37,7 @@ let OrderSchema = mongoose.Schema({
     referencePoint: { type: String },
     addressLocality: { type: String },
     addressRegin: { type: String },
-    postalCode: { type: String, maxlength: 8 }
+    postalCode: { type: String, maxlength: 9 }
   }
 });
 
