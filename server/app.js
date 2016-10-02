@@ -13,7 +13,7 @@ let AppController = require('./controller/AppController');
 
 app.set('json replacer', null);
 app.set('json spaces', false);
-app.set('port', 3000);
+app.set('port', process.env.NODE_PORT || 3000);
 
 app.disable('etag');
 app.disable('x-powered-by');
