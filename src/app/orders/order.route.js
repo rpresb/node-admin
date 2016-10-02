@@ -10,7 +10,7 @@
   function config ($stateProvider) {
     $stateProvider
     .state('app.orders', {
-      url: '/orders?q?',
+      url: '/orders?q?page?',
       controller: 'OrderListController',
       controllerAs: 'vm',
       templateUrl: '/orders/list.html',

@@ -1,4 +1,8 @@
-<form name="vm.searchOrderForm" class="search-form" role="search" ng-submit="vm.searchAction(vm.q)" novalidate>
+<form name="vm.searchOrderForm"
+  class="search-form"
+  role="search"
+  ng-submit="state.go(state.current.name, { q: vm.q })"
+  novalidate>
     <div class="input-group">
         <input
           type="text"
@@ -17,7 +21,7 @@
     </div>
 </form>
 
-<button class="btn btn-secondary" ng-click="vm.open()">+ Novo</button>
+<button class="btn btn-secondary" ng-click="state.go('app.order')">+ Novo</button>
 
 <p ng-if="!vm.data.items">Nenhum produto encontrado</p>
 
@@ -29,10 +33,25 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="pointer" ng-repeat="order in vm.data.items" ng-click="vm.open(order._id)">
+    <tr class="pointer"
+      ng-repeat="order in vm.data.items"
+      ng-click="state.go('app.order', { id: order._id })">
       <td>{{ order.name }}</td>
       <td>{{ order.price }}</td>
     </tr>
   </tbody>
 </table>
+
+
+<ul uib-pagination
+  previous-text="&lsaquo;"
+  next-text="&rsaquo;"
+  last-text="&raquo;"
+  force-ellipses="true"
+  max-size="9"
+  items-per-page="10"
+  total-items="vm.data._metadata.total"
+  ng-model="vm.data._metadata.page"
+  ng-change="state.go(state.current, { page: vm.data._metadata.page })">
+</ul>
 

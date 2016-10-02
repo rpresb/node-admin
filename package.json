@@ -1,5 +1,6 @@
 {
   "name": "delivery-admin",
+  "private": true,
   "version": "0.0.1",
   "description": "",
   "main": "server/bin/www",
@@ -11,6 +12,14 @@
     "server": "export DEBUG=delivery-admin:*; nodemon ./server/bin/www",
     "test": "export NODE_ENV=test; export DEBUG=delivery-admin:*; ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/nodejs/*"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wbruno/delivery-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wbruno/delivery-admin/issues"
+  },
+  "homepage": "https://github.com/wbruno/delivery-admin#readme",
   "author": "William B. <wbrunom@gmail.com> (http://wbruno.com.br)",
   "license": "ISC",
   "dependencies": {

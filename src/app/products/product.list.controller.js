@@ -12,7 +12,7 @@
 
     RestService.endpoint = 'products';
     angular.extend(vm, $controller('GenericListController', {
-        vm: vm, $state: $state, service: RestService, module: 'product'
+        vm: vm, $state: $state, service: RestService
       })
     );
 

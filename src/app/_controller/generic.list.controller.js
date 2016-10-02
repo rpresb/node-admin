@@ -7,19 +7,10 @@
 
 
   /*@ngInject*/
-  function GenericListController($state, vm, service, module, NotificationService) {
+  function GenericListController($state, vm, service, NotificationService) {
     vm.q = $state.params.q;
-    vm.open = open;
-    vm.searchAction = searchAction;
 
     _init({ q: vm.q });
-
-    function open(id) {
-      $state.go('app.' + module, { id: id });
-    }
-    function searchAction(q) {
-      $state.go($state.current.name, { q: q });
-    }
 
     /**
      * private

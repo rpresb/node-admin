@@ -1,4 +1,8 @@
-<form name="vm.searchCustomerForm" class="search-form" role="search" ng-submit="vm.searchAction(vm.q)" novalidate>
+<form name="vm.searchCustomerForm"
+  class="search-form"
+  role="search"
+  ng-submit="state.go(state.current.name, { q: vm.q })"
+  novalidate>
     <div class="input-group">
         <input
           type="text"
@@ -17,7 +21,7 @@
     </div>
 </form>
 
-<button class="btn btn-secondary" ng-click="vm.open()">+ Novo</button>
+<button class="btn btn-secondary" ng-click="state.go('app.customer')">+ Novo</button>
 
 <p ng-if="!vm.data.items">Nenhum cliente encontrado</p>
 
@@ -30,7 +34,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="pointer" ng-repeat="customer in vm.data.items" ng-click="vm.open(customer._id)">
+    <tr class="pointer"
+      ng-repeat="customer in vm.data.items"
+      ng-click="state.go('app.customer', { id: customer._id })">
       <td>{{ customer.givenName }}</td>
       <td>{{ customer.telephones }}</td>
       <td>{{ customer.email }}</td>
@@ -38,18 +44,14 @@
   </tbody>
 </table>
 
-
-{{ vm.data._metadata.total }}
-{{ vm.data._metadata.size }}
-{{ vm.data._metadata.total > vm.data._metadata.size }}
-
-<uib-pagination
-    previous-text="&lsaquo;"
-    next-text="&rsaquo;"
-    last-text="&raquo;"
-    total-items="{{vm.data._metadata.total}}"
-    items-per-page="3"
-    ng-model="vm.currentPage"
-    max-size="3"
-    force-ellipses="true"
-    ng-change="vm.goToPage(vm.currentPage)"></uib-pagination>
+<ul uib-pagination
+  previous-text="&lsaquo;"
+  next-text="&rsaquo;"
+  last-text="&raquo;"
+  force-ellipses="true"
+  max-size="9"
+  items-per-page="10"
+  total-items="vm.data._metadata.total"
+  ng-model="vm.data._metadata.page"
+  ng-change="state.go(state.current, { page: vm.data._metadata.page })">
+</ul>
