@@ -6,6 +6,7 @@ let repository = require('../repository/CustomerRepository');
 let CustomerController = {
   list: function(request, response, next) {
     let query = {};
+    let page = parseInt(request.query.page || 1, 10);
 
     if (request.query.q) {
       let search = new RegExp(request.query.q, 'i');
@@ -30,7 +31,7 @@ let CustomerController = {
         _metadata: {
           size: (result || []).length,
           total: 500,
-          page: 1
+          page: page
         }
       });
     });

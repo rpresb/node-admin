@@ -23,15 +23,15 @@
                 class="form-control" />
             </td>
             <td>{{ product.price }}</td>
-            <td>{{ (product.quantity || 0) * product.price }}</td>
+            <td>{{ product.total = (product.quantity || 0) * product.price }}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td><b>Total:</b></td>
-            <td>{{ vm.data.items.length }}</td>
+            <td>{{ vm.data.items | sum:'quantity' }}</td>
             <td></td>
-            <td>{{ vm.data.payment.total }}</td>
+            <td>{{ vm.data.items | sum:'total' }}</td>
           </tr>
         </tfoot>
       </table>
@@ -62,15 +62,15 @@
                 class="form-control" />
             </td>
             <td>{{ product.price }}</td>
-            <td>{{ (product.quantity || 0) * product.price }}</td>
+            <td>{{ product.total = (product.quantity || 0) * product.price }}</td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td><b>Total:</b></td>
-            <td>{{ vm.data.items.length }}</td>
+            <td>{{ vm.data.gifts | sum:'quantity' }}</td>
             <td></td>
-            <td>{{ vm.data.payment.total }}</td>
+            <td>{{ vm.data.gifts | sum:'total' }}</td>
           </tr>
         </tfoot>
       </table>
