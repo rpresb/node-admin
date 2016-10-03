@@ -31,7 +31,8 @@
       formatYear: 'yy',
       maxDate: new Date(2020, 5, 22),
       minDate: new Date(),
-      startingDay: 1
+      startingDay: 1,
+      showWeeks: false
     };
 
 

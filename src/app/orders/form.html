@@ -2,7 +2,7 @@
   <fieldset class="row">
     <legend class="col-md-12 col-sm-12">Pedido</legend>
     <div class="col-md-12 col-sm-12">
-      <table class="table">
+      <table class="table" border="0" cellspacing="0" cellpadding="0">
         <thead>
           <tr>
             <th>Produto</th>
@@ -80,8 +80,8 @@
   </fieldset>
 
   <fieldset class="row">
-    <div class="col-md-4 col-sm-4 form-group">
-      <label>Data de entrega</label>
+    <div class="col-md-3 col-sm-3 form-group">
+      <label>Dia de entrega</label>
 
       <input type="text" class="form-control"
           uib-datepicker-popup="dd/MM/yyyy"
@@ -93,7 +93,14 @@
           show-button-bar="false"
           ng-focus="deliveryDate.opened = true" />
     </div>
-    <div class="col-md-4 col-sm-4 form-group">
+    <div class="col-md-3 col-sm-3 form-group">
+      <div uib-timepicker
+          class="timepicker"
+          ng-model="vm.data.delivery.date"
+          show-meridian="ismeridian"></div>
+
+    </div>
+    <div class="col-md-3 col-sm-3 form-group">
       <label>Taxa de entrega</label>
       <input
           type="tel"
@@ -107,7 +114,7 @@
           max="100"
           maxlength="9">
     </div>
-    <div class="col-md-4 col-sm-4 form-group">
+    <div class="col-md-3 col-sm-3 form-group">
       <label>Entregador</label>
       <select class="form-control" ng-model="vm.data.delivery.courier">
           <option value="Eduardo">Eduardo</option>
