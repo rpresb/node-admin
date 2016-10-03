@@ -18,14 +18,28 @@
 
     if (id) {
       _byId(id);
+    } else {
+      vm.data.delivery = {
+        date: new Date(),
+        price: 5
+      };
     }
     _fetchProducts();
+
+
+    vm.dateOptions = {
+      formatYear: 'yy',
+      maxDate: new Date(2020, 5, 22),
+      minDate: new Date(),
+      startingDay: 1
+    };
 
 
     function save(_data) {
       var data = angular.copy(_data);
 
-      data.items = _filterProductsWithQuantity(data.items)
+      data.items = _filterProductsWithQuantity(data.items);
+      data.gifts = _filterProductsWithQuantity(data.gifts);
       console.log('data', data)
       return false;
 

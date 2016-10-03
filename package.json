@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.1",
   "description": "",
-  "main": "server/bin/www",
+  "main": "server/app.js",
+  "bin": "server/bin/www",
   "scripts": {
     "start": "npm-run-all --parallel server gulp gulp-watch karma",
     "gulp": "gulp",
@@ -12,6 +13,7 @@
     "server": "export DEBUG=delivery-admin:*; nodemon ./server/bin/www",
     "test": "export NODE_ENV=test; export DEBUG=delivery-admin:*; ./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/nodejs/*"
   },
+  "os": [ "darwin", "linux", "!win32" ],
   "engines": {
     "node": ">=5.11 <6.7",
     "npm" : "~3.10.8"
