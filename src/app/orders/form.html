@@ -23,8 +23,12 @@
                 ui-number-mask="0"
                 class="form-control" />
             </td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.total = (product.quantity || 0) * product.price }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td>
+              <span ng-if="product.quantity">
+              {{ (product.total = (product.quantity || 0) * product.price) | currency }}
+              </span>
+            </td>
           </tr>
         </tbody>
         <tfoot>
@@ -32,7 +36,7 @@
             <td><b>Total:</b></td>
             <td>{{ vm.data.items | sum:'quantity' }}</td>
             <td></td>
-            <td>{{ vm.data.items | sum:'total' }}</td>
+            <td>{{ vm.data.items | sum:'total' | currency  }}</td>
           </tr>
         </tfoot>
       </table>
@@ -63,8 +67,12 @@
                 ui-number-mask="0"
                 class="form-control" />
             </td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.total = (product.quantity || 0) * product.price }}</td>
+            <td>{{ product.price | currency }}</td>
+            <td>
+              <span ng-if="product.quantity">
+              {{ (product.total = (product.quantity || 0) * product.price) | currency }}
+              </span>
+            </td>
           </tr>
         </tbody>
         <tfoot>
@@ -72,7 +80,7 @@
             <td><b>Total:</b></td>
             <td>{{ vm.data.gifts | sum:'quantity' }}</td>
             <td></td>
-            <td>{{ vm.data.gifts | sum:'total' }}</td>
+            <td>{{ vm.data.gifts | sum:'total' | currency }}</td>
           </tr>
         </tfoot>
       </table>
@@ -97,7 +105,8 @@
       <div uib-timepicker
           class="timepicker"
           ng-model="vm.data.delivery.date"
-          show-meridian="ismeridian"></div>
+          show-seconds="false"
+          meridians="['AM', 'PM']"></div>
 
     </div>
     <div class="col-md-3 col-sm-3 form-group">

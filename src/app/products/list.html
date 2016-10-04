@@ -37,7 +37,7 @@
       ng-repeat="product in vm.data.items"
       ng-click="state.go('app.product', { id: product._id })">
       <td>{{ product.name }}</td>
-      <td>{{ product.price }}</td>
+      <td>{{ product.price | currency }}</td>
     </tr>
   </tbody>
 </table>
