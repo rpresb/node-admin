@@ -10,7 +10,6 @@
   function OrderController($state, RestService, ProductService, NotificationService, CustomerService, OrderService) {
     var vm = this;
     var id = $state.params.id;
-    var DELIVERY_TIME = 50 * 60 * 1000;
 
     RestService.endpoint = 'orders';
 
@@ -21,11 +20,7 @@
     if (id) {
       _byId(id);
     } else {
-      var now = new Date().getTime();
-      vm.data.delivery = {
-        date: new Date(now + DELIVERY_TIME),
-        price: 5
-      };
+      vm.data.delivery = OrderService.getDeliveryTime();
     }
     _fetchProducts();
 
@@ -79,11 +74,6 @@
           vm.data.gifts = angular.copy(data);
         })
         .catch(NotificationService.err)
-    }
-    function _filterProductsWithQuantity(items) {
-      return (items || []).filter(function(item) {
-        return item.quantity;
-      });
     }
 
     return vm;

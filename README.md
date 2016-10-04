@@ -4,6 +4,7 @@
 
 ```
 $ mongoimport -d delivery-admin -c postalcodes --type csv  --file ~/Downloads/ceps.csv --headerline
+$ mongoimport --host ds037272.mongolab.com --port 37272 -u dragons-api -d dragons-api -c postalcodes --type csv  --file ./ceps.csv --headerline -p UeP-XNS-2vf-nvm
 ```
 
 # Run application

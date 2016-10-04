@@ -7,7 +7,17 @@
 
   /*@ngInject*/
   function OrderService(HTTPService) {
+    var DELIVERY_TIME = 50 * 60 * 1000;
+
     var service = {
+      getDeliveryTime: function() {
+        var now = new Date().getTime();
+        return {
+          date: new Date(now + DELIVERY_TIME),
+          price: 5
+        };
+      },
+
       save: function(_data) {
         var data = angular.copy(_data);
 
@@ -25,6 +35,12 @@
           .then(HTTPService.handleError);
       }
     };
+
+    function _filterProductsWithQuantity(items) {
+      return (items || []).filter(function(item) {
+        return item.quantity;
+      });
+    }
 
     return service;
   };
