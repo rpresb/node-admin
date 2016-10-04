@@ -10,6 +10,7 @@
   function OrderController($state, RestService, ProductService, NotificationService) {
     var vm = this;
     var id = $state.params.id;
+    var DELIVERY_TIME = 50 * 60 * 1000;
 
     RestService.endpoint = 'orders';
 
@@ -19,8 +20,9 @@
     if (id) {
       _byId(id);
     } else {
+      var now = new Date().getTime();
       vm.data.delivery = {
-        date: new Date(),
+        date: new Date(now + DELIVERY_TIME),
         price: 5
       };
     }

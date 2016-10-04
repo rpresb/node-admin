@@ -8,20 +8,29 @@
   <li class="sidebar-item">
     <a href="#/customers"
       ui-sref="app.customers"
-      ng-class="{'is-active': state.current.name.includes('app.customers')}"
-      class="sidebar-link">Clientes</a>
+      ng-class="{'is-active': state.current.name.includes('app.customer')}"
+      class="sidebar-link">
+      <i class="fa fa-users" aria-hidden="true"></i>
+      Clientes
+    </a>
   </li>
   <li class="sidebar-item">
     <a href="#/products"
       ui-sref="app.products"
-      ng-class="{'is-active': state.current.name.includes('app.products')}"
-      class="sidebar-link">Produtos</a>
+      ng-class="{'is-active': state.current.name.includes('app.product')}"
+      class="sidebar-link">
+      <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+      Produtos
+    </a>
   </li>
   <li class="sidebar-item">
     <a href="#/orders"
       ui-sref="app.orders"
-      ng-class="{'is-active': state.current.name.includes('app.orders')}"
-      class="sidebar-link">Pedidos</a>
+      ng-class="{'is-active': state.current.name.includes('app.order')}"
+      class="sidebar-link">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      Pedidos
+    </a>
   </li>
 </ul><!-- .sidebar-nav -->
 
