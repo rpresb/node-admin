@@ -18,6 +18,7 @@
     };
     vm.save = save;
     vm.findByPostalCode = findByPostalCode;
+    vm.findReferencePoint = findReferencePoint;
 
     vm.dateOptions = {
       formatYear: 'yy',
@@ -43,6 +44,18 @@
           NotificationService.success({ title: 'Cliente', message: 'Salvo com sucesso' });
         })
         .catch(NotificationService.err);
+    }
+
+    function findReferencePoint(postalCode, number) {
+      if (!postalCode || postalCode.length < 8 || !number) {
+        return false;
+      }
+      PostalCodeService.findReferencePoint(postalCode, number)
+        .then(function(response) {
+          var data = response.data;
+          vm.data.address = vm.data.address || {};
+          vm.data.address.referencePoint = data.referencePoint;
+        })
     }
 
     function findByPostalCode(postalCode) {

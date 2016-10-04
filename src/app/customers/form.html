@@ -84,7 +84,6 @@
           ng-model="vm.data.birthDate"
           is-open="birthDate.opened"
           datepicker-options="vm.dateOptions"
-          ng-required="true"
           close-text="Fechar"
           show-button-bar="false"
           ng-focus="birthDate.opened = true" />
@@ -130,7 +129,8 @@
           autocomplete="off"
           ng-model="vm.data.address.number"
           ng-minlength="3"
-          placeholder="Ex: 206 ap 51A"
+          ng-blur="vm.findReferencePoint(vm.data.address.postalCode, vm.data.address.number)"
+          placeholder="Ex: 206"
           maxlength="100">
     </div>
     <div class="col-md-6 col-sm-6 form-group">
@@ -206,6 +206,7 @@
           class="form-control"
           size="50"
           autocomplete="off"
+          placeholder="Ex: ap 51 bloco A"
           ng-model="vm.data.address.complement"
           maxlength="50">
     </div>

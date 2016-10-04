@@ -14,7 +14,7 @@ let OrderController = {
       let search = new RegExp(request.query.q, 'i');
       query = {
         $or: [
-          { name: search }
+          { 'customer.givenName': search }
         ]
       };
     }
