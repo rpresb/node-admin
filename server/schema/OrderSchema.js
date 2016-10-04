@@ -4,8 +4,8 @@ let mongoose = require('../config/MongooseConfig');
 
 
 let OrderSchema = mongoose.Schema({
-  _customerId: { type: mongoose.Schema.Types.ObjectId },
   customer: {
+    _id: { type: mongoose.Schema.Types.ObjectId, required: true },
     givenName: { type: String }
   },
   createdAt: { type: Date, default: Date.now },

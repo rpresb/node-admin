@@ -19,6 +19,14 @@
     vm.save = save;
     vm.findByPostalCode = findByPostalCode;
 
+    vm.dateOptions = {
+      formatYear: 'yy',
+      maxDate: new Date(),
+      minDate: new Date(1900, 0, 1),
+      startingDay: 1,
+      showWeeks: false
+    };
+
     if (id) {
       _byId(id)
     }
@@ -61,7 +69,7 @@
       RestService.byId(id)
         .then(function(response) {
           vm.data = response.data;
-
+          vm.data.birthDate = vm.data.birthDate ? new Date(vm.data.birthDate) : '';
           vm.disableAddressFields = !!(vm.data.address && vm.data.address.streetAddress);
         })
         .catch(NotificationService.err);

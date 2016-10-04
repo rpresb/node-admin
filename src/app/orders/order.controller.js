@@ -66,6 +66,10 @@
       RestService.byId(id)
         .then(function(response) {
           vm.data = response.data;
+
+          if (vm.data.delivery && vm.data.delivery.date) {
+            vm.data.delivery.date = new Date(vm.data.delivery.date);
+          }
         })
         .catch(NotificationService.err);
     }
