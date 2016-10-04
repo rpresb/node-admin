@@ -6,6 +6,17 @@ global.CUSTOMER = {
   email: 'jane@doe.com'
 };
 
+global.POSTAL_CODE = {
+  postalCode: 1310000,
+  streetAddress: 'AV PAULISTA'
+};
+
+global.REFERENCE_POINT = {
+  postalCode: 5323001,
+  number: 1632,
+  referencePoint: 'Condomínio Story'
+};
+
 global.PRODUCT = {
   name: 'Strudel de Maçã',
   price: 70.0,
