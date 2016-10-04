@@ -48,6 +48,14 @@ let CustomerController = {
     let _id = request.params._id;
     repository.findOne({ _id: _id })
     .then(function(result) {
+      if (!result) {
+        let err = new Error('customer not found');
+        err.status = 404;
+        throw err;
+      }
+      return result;
+    })
+    .then(function(result) {
       response.json(result);
     })
     .catch(next);
@@ -65,21 +73,19 @@ let CustomerController = {
   },
   update: function(request, response, next) {
     let _id = request.params._id;
-    repository.update({ _id: _id }, { $set: request.body }).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
+    repository.update({ _id: _id }, { $set: request.body })
+    .then(function(result) {
       response.json(result);
-    });
+    })
+    .catch(next);
   },
   remove: function(request, response, next) {
     let _id = request.params._id;
-    repository.remove({ _id: _id }).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
+    repository.remove({ _id: _id })
+    .then(function(err, result) {
       response.sendStatus(204);
-    });
+    })
+    .catch(next);
   }
 };
 

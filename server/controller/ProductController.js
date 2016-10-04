@@ -47,13 +47,11 @@ let ProductController = {
   },
   byId: function(request, response, next) {
     let _id = request.params._id;
-    repository.findOne({ _id: _id }).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
-
+    repository.findOne({ _id: _id })
+    .then(function(result) {
       response.json(result);
-    });
+    })
+    .catch(next);
   },
   create: function(request, response, next) {
     let product = new repository(request.body);
@@ -68,21 +66,19 @@ let ProductController = {
   },
   update: function(request, response, next) {
     let _id = request.params._id;
-    repository.update({ _id: _id }, { $set: request.body }).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
+    repository.update({ _id: _id }, { $set: request.body })
+    .then(function(result) {
       response.json(result);
-    });
+    })
+    .catch(next);
   },
   remove: function(request, response, next) {
     let _id = request.params._id;
-    repository.remove({ _id: _id }).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
+    repository.remove({ _id: _id })
+    .then(function(result) {
       response.sendStatus(204);
-    });
+    })
+    .catch(next);
   }
 };
 

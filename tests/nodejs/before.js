@@ -1,7 +1,29 @@
 'use strict';
 
-global.USER = {
+global.CUSTOMER = {
   givenName: 'Jane',
   familyName: 'Doe',
   email: 'jane@doe.com'
+};
+
+global.PRODUCT = {
+  name: 'Strudel de Maçã',
+  price: 70.0,
+  gift: false
+};
+
+global.GIFT = {
+  name: 'Mini Strudel de Maçã',
+  price: 4.0,
+  gift: true
+};
+
+global.ORDER = {
+  customer: {
+    _id: '57f37e574295dc4dc9f84fed',
+    givenName: 'Jane'
+  },
+  createdAt: new Date(),
+  items: [PRODUCT],
+  gifts: [GIFT]
 };
