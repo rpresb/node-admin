@@ -7,7 +7,7 @@
 
 
   /*@ngInject*/
-  function OrderController($state, RestService, ProductService, NotificationService) {
+  function OrderController($state, RestService, ProductService, NotificationService, CustomerService, OrderService) {
     var vm = this;
     var id = $state.params.id;
     var DELIVERY_TIME = 50 * 60 * 1000;
@@ -16,6 +16,7 @@
 
     vm.data = {};
     vm.save = save;
+    vm.autocompleteCustomer = autocompleteCustomer;
 
     if (id) {
       _byId(id);
@@ -38,15 +39,8 @@
     };
 
 
-    function save(_data) {
-      var data = angular.copy(_data);
-
-      data.items = _filterProductsWithQuantity(data.items);
-      data.gifts = _filterProductsWithQuantity(data.gifts);
-      console.log('data', data)
-      return false;
-
-      RestService.save(data)
+    function save(data) {
+      OrderService.save(data)
         .then(function(response) {
           var data = response.data;
 
@@ -57,6 +51,10 @@
           NotificationService.success({ title: 'Pedido', message: 'Salvo com sucesso' });
         })
         .catch(NotificationService.err);
+    }
+
+    function autocompleteCustomer(search) {
+      CustomerService.search({ q: search });
     }
 
     /**
