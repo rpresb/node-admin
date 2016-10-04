@@ -46,13 +46,11 @@ let CustomerController = {
   },
   byId: function(request, response, next) {
     let _id = request.params._id;
-    repository.findOne({ _id: _id }).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
-
+    repository.findOne({ _id: _id })
+    .then(function(result) {
       response.json(result);
-    });
+    })
+    .catch(next);
   },
   create: function(request, response, next) {
     let customer = new repository(request.body);

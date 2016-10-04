@@ -14,7 +14,7 @@ let AppController = {
     response.status(err.status || 500);
     response.json(result);
 
-    // debug(result);
+    debug(err.message);
   }
 };
 

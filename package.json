@@ -16,7 +16,7 @@
   "os": [ "darwin", "linux", "!win32" ],
   "engines": {
     "node": "~6.7",
-    "npm" : "~3.8.6"
+    "npm" : "~3.10.3"
   },
   "repository": {
     "type": "git",

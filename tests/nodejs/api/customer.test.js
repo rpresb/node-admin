@@ -1,23 +1,60 @@
 'use strict';
 
-const USER = {
-  givenName: 'Jane',
-  familyName: 'Doe',
-  email: 'jane@doe.com'
-};
-
 let mongoose = require('../../../server/config/MongooseConfig');
 
 describe('Customer', function() {
-  beforeEach(function() {
-    mongoose.connection.db.dropDatabase();
+  let id;
+  beforeEach(function(done) {
+    let db = mongoose.connection.db;
+    let _user = Object.assign({}, USER);
+    db.dropDatabase(function() {
+      db.collection('customers').insert([_user, { givenName: 'Sinead' }], function(err, data) {
+        debug('data', data);
+
+        id = data.ops[0]._id;
+
+        done();
+      });
+    });
   });
 
   it('GET /api/customers should list all', function(done) {
     request
       .get('/api/customers')
       .end(function(err, response) {
+        let data = response.body;
+
+        debug('data', data);
+        assert.equal(response.status, 200);
         assert.ok(Array.isArray(response.body.items));
+        assert.equal(data.items[0].givenName, 'Jane');
+        assert.equal(data.items.length, 2);
+        done();
+      });
+  });
+
+  it('GET /api/customers?q=jane should filter results', function(done) {
+    request
+      .get('/api/customers?q=jane')
+      .end(function(err, response) {
+        let data = response.body;
+        assert.equal(response.status, 200);
+        assert.ok(Array.isArray(response.body.items));
+        assert.equal(data.items[0].givenName, 'Jane');
+        assert.equal(data.items.length, 1);
+        done();
+      });
+  });
+
+  it('GET /api/customers/:id should return customer', function(done) {
+    request
+      .get(`/api/customers/${id}`)
+      .end(function(err, response) {
+        let data = response.body;
+        assert.equal(data.givenName, 'Jane');
+        assert.equal(data.familyName, 'Doe');
+        assert.equal(response.status, 200);
+        assert.ok(response.body);
         done();
       });
   });
