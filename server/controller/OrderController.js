@@ -1,5 +1,6 @@
 'use strict';
 
+let bluebird = require('bluebird');
 let debug = require('debug')('delivery-admin:controller:order');
 let repository = require('../repository/OrderRepository');
 
@@ -17,20 +18,25 @@ let OrderController = {
     }
     debug('query', query);
 
-    repository.find(query).exec(function(err, result) {
-      if (err) {
-        return next(err);
-      }
-
-      response.json({
+    bluebird.all([
+      repository.find(query),
+      repository.count(query)
+    ])
+    .then(function(results) {
+      let result = results[0];
+      let count = results[1];
+      let data = {
         items: result,
         _metadata: {
           size: (result || []).length,
-          total: 500,
+          total: count,
           page: 1
         }
-      });
-    });
+      };
+
+      response.json(data);
+    })
+    .catch(next);
   },
   byId: function(request, response, next) {
     let _id = request.params._id;

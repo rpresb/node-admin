@@ -32,7 +32,7 @@ css.source = DEPENDENCIES.css.concat(css.source);
 
 gulp.task('css', function () {
   return gulp.src(css.source)
-    .pipe(cssnano())
+    .pipe(cssnano({ discardComments: {removeAll: true} }))
     .pipe(concat('all.min.css'))
     .pipe(gulp.dest(css.target))
     .pipe(livereload());

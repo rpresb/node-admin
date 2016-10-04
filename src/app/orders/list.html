@@ -51,7 +51,7 @@
   max-size="9"
   items-per-page="10"
   total-items="vm.data._metadata.total"
+  ng-if="vm.data._metadata.total > 10"
   ng-model="vm.data._metadata.page"
   ng-change="state.go(state.current, { page: vm.data._metadata.page })">
 </ul>
-
