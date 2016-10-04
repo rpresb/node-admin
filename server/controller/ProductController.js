@@ -3,11 +3,13 @@
 let bluebird = require('bluebird');
 let debug = require('debug')('delivery-admin:controller:product');
 let repository = require('../repository/ProductRepository');
+const PER_PAGE = 10;
 
 let ProductController = {
   list: function(request, response, next) {
     let query = {};
     let attr = request.query.attr;
+    let page = request.query.page || 1;
 
     if (request.query.q) {
       let search = new RegExp(request.query.q, 'i');
@@ -20,7 +22,7 @@ let ProductController = {
     debug('query', query);
 
     bluebird.all([
-      repository.find(query),
+      repository.find(query).limit(PER_PAGE).skip(PER_PAGE * (page - 1)),
       repository.count(query)
     ])
     .then(function(results) {
@@ -31,6 +33,7 @@ let ProductController = {
         _metadata: {
           size: (result || []).length,
           total: count,
+          perPage: PER_PAGE,
           page: 1
         }
       };

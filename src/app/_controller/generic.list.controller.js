@@ -10,7 +10,7 @@
   function GenericListController($state, vm, service, NotificationService) {
     vm.q = $state.params.q;
 
-    _init({ q: vm.q });
+    _init({ q: vm.q, page: $state.params.page });
 
     /**
      * private

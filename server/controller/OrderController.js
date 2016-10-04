@@ -3,6 +3,7 @@
 let bluebird = require('bluebird');
 let debug = require('debug')('delivery-admin:controller:order');
 let repository = require('../repository/OrderRepository');
+const PER_PAGE = 10;
 
 let OrderController = {
   list: function(request, response, next) {
@@ -19,7 +20,7 @@ let OrderController = {
     debug('query', query);
 
     bluebird.all([
-      repository.find(query),
+      repository.find(query).limit(PER_PAGE).skip(PER_PAGE * (page - 1)),
       repository.count(query)
     ])
     .then(function(results) {
@@ -30,6 +31,7 @@ let OrderController = {
         _metadata: {
           size: (result || []).length,
           total: count,
+          perPage: PER_PAGE,
           page: 1
         }
       };
