@@ -36,7 +36,7 @@ let CustomerController = {
           size: (result || []).length,
           total: count,
           perPage: PER_PAGE,
-          page: 1
+          page: page
         }
       };
 

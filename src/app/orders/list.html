@@ -23,9 +23,9 @@
 
 <button class="btn btn-secondary" ng-click="state.go('app.order')">+ Novo</button>
 
-<p ng-if="!vm.data.items">Nenhum pedido encontrado</p>
+<p ng-if="!vm.data.items.length">Nenhum pedido encontrado</p>
 
-<table class="table" ng-if="vm.data.items">
+<table class="table" ng-if="vm.data.items.length">
   <thead>
     <tr>
       <td>Nome</td>

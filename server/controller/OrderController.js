@@ -8,6 +8,7 @@ const PER_PAGE = 10;
 let OrderController = {
   list: function(request, response, next) {
     let query = {};
+    let page = parseInt(request.query.page || 1, 10);
 
     if (request.query.q) {
       let search = new RegExp(request.query.q, 'i');
@@ -32,7 +33,7 @@ let OrderController = {
           size: (result || []).length,
           total: count,
           perPage: PER_PAGE,
-          page: 1
+          page: page
         }
       };
 

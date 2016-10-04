@@ -9,7 +9,7 @@ let ProductController = {
   list: function(request, response, next) {
     let query = {};
     let attr = request.query.attr;
-    let page = request.query.page || 1;
+    let page = parseInt(request.query.page || 1, 10);
 
     if (request.query.q) {
       let search = new RegExp(request.query.q, 'i');
@@ -34,7 +34,7 @@ let ProductController = {
           size: (result || []).length,
           total: count,
           perPage: PER_PAGE,
-          page: 1
+          page: page
         }
       };
       if (attr === 'items') {

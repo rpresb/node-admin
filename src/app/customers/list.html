@@ -23,9 +23,9 @@
 
 <button class="btn btn-secondary" ng-click="state.go('app.customer')">+ Novo</button>
 
-<p ng-if="!vm.data.items">Nenhum cliente encontrado</p>
+<p ng-if="!vm.data.items.length">Nenhum cliente encontrado</p>
 
-<table class="table" ng-if="vm.data.items">
+<table class="table" ng-if="vm.data.items.length">
   <thead>
     <tr>
       <td>Nome</td>
