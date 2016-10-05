@@ -13,6 +13,13 @@ var FactoryGirl = {
 
 var CUSTOMER;
 
+
+function getElement(compile, $scope, html){
+  var element = compile(angular.element(html))($scope);
+  $scope.$digest();
+  return element;
+}
+
 var before = function($rootScope, _$httpBackend_, _$localStorage_) {
   $httpBackend = _$httpBackend_;
   $localStorage = _$localStorage_;
