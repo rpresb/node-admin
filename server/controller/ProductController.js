@@ -49,6 +49,14 @@ let ProductController = {
     let _id = request.params._id;
     repository.findOne({ _id: _id })
     .then(function(result) {
+      if (!result) {
+        let err = new Error('product not found');
+        err.status = 404;
+        throw err;
+      }
+      return result;
+    })
+    .then(function(result) {
       response.json(result);
     })
     .catch(next);

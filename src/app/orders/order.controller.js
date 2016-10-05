@@ -13,14 +13,14 @@
 
     RestService.endpoint = 'orders';
 
-    vm.data = {};
-    vm.save = save;
+    vm.order = {};
+    vm.saveOrder = saveOrder;
     vm.autocompleteCustomer = autocompleteCustomer;
 
     if (id) {
       _byId(id);
     } else {
-      vm.data.delivery = OrderService.getDeliveryTime();
+      vm.order.delivery = OrderService.getDeliveryTime();
     }
     _fetchProducts();
 
@@ -33,9 +33,8 @@
       showWeeks: false
     };
 
-
-    function save(data) {
-      OrderService.save(data)
+    function saveOrder(order) {
+      OrderService.save(order)
         .then(function(response) {
           var data = response.data;
 
@@ -43,9 +42,9 @@
             $state.go($state.current.name, { id: data._id });
           }
 
-          NotificationService.success({ title: 'Pedido', message: 'Salvo com sucesso' });
+          NotificationService.success({ title: 'order', message: 'form.saved' });
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
 
     function autocompleteCustomer(search) {
@@ -58,22 +57,22 @@
     function _byId(id) {
       RestService.byId(id)
         .then(function(response) {
-          vm.data = response.data;
+          vm.order = response.data;
 
-          if (vm.data.delivery && vm.data.delivery.date) {
-            vm.data.delivery.date = new Date(vm.data.delivery.date);
+          if (vm.order.delivery && vm.order.delivery.date) {
+            vm.order.delivery.date = new Date(vm.order.delivery.date);
           }
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
     function _fetchProducts() {
       return ProductService.list({ attr: 'items' })
         .then(function(response) {
           var data = response.data;
-          vm.data.items = data;
-          vm.data.gifts = angular.copy(data);
+          vm.order.items = data;
+          vm.order.gifts = angular.copy(data);
         })
-        .catch(NotificationService.err)
+        .catch(NotificationService.error)
     }
 
     return vm;

@@ -13,10 +13,10 @@
 
     RestService.endpoint = 'customers';
 
-    vm.data = {
+    vm.customer = {
       address: { addressRegion: 'SP' }
     };
-    vm.save = save;
+    vm.saveCustomer = saveCustomer;
     vm.findByPostalCode = findByPostalCode;
     vm.findReferencePoint = findReferencePoint;
 
@@ -29,10 +29,10 @@
     };
 
     if (id) {
-      _byId(id)
+      _byId(id);
     }
 
-    function save(data) {
+    function saveCustomer(data) {
       RestService.save(data)
         .then(function(response) {
           var data = response.data;
@@ -41,9 +41,9 @@
             $state.go($state.current.name, { id: data._id });
           }
 
-          NotificationService.success({ title: 'Cliente', message: 'Salvo com sucesso' });
+          NotificationService.success({ title: 'customer', message: 'form.saved' });
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
 
     function findReferencePoint(postalCode, number) {
@@ -53,8 +53,8 @@
       PostalCodeService.findReferencePoint(postalCode, number)
         .then(function(response) {
           var data = response.data;
-          vm.data.address = vm.data.address || {};
-          vm.data.address.referencePoint = data.referencePoint;
+          vm.customer.address = vm.customer.address || {};
+          vm.customer.address.referencePoint = data.referencePoint;
         })
     }
 
@@ -67,13 +67,13 @@
         .then(function(response) {
           var data = response.data;
 
-          vm.data.address = data;
-          vm.data.address.postalCode = postalCode;
+          vm.customer.address = data;
+          vm.customer.address.postalCode = postalCode;
           vm.disableAddressFields = !!data.streetAddress;
         })
         .catch(function() {
           vm.disableAddressFields = false;
-        })
+        });
     }
     /**
      * private
@@ -81,11 +81,11 @@
     function _byId(id) {
       RestService.byId(id)
         .then(function(response) {
-          vm.data = response.data;
-          vm.data.birthDate = vm.data.birthDate ? new Date(vm.data.birthDate) : '';
-          vm.disableAddressFields = !!(vm.data.address && vm.data.address.streetAddress);
+          vm.customer = response.data;
+          vm.customer.birthDate = vm.customer.birthDate ? new Date(vm.customer.birthDate) : '';
+          vm.disableAddressFields = !!(vm.customer.address && vm.customer.address.streetAddress);
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
 
     return vm;

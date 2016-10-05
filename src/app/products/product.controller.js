@@ -13,7 +13,7 @@
 
     RestService.endpoint = 'products';
 
-    vm.data = {};
+    vm.product = {};
     vm.save = save;
 
     if (id) {
@@ -29,9 +29,9 @@
             $state.go($state.current.name, { id: data._id });
           }
 
-          NotificationService.success({ title: 'Produto', message: 'Salvo com sucesso' });
+          NotificationService.success({ title: 'product', message: 'form.saved' });
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
 
     /**
@@ -40,9 +40,9 @@
     function _byId(id) {
       RestService.byId(id)
         .then(function(response) {
-          vm.data = response.data;
+          vm.product = response.data;
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
 
     return vm;

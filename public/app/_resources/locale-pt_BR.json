@@ -1,1 +1,10 @@
-{}
+{
+  "customer not found": "Cliente não encontrado",
+  "order not found": "Pedido não encontrado",
+  "product not found": "Produto não encontrado",
+
+  "form.saved": "salvo com sucesso",
+  "customer": "Cliente",
+  "order": "Pedido",
+  "product": "Produto"
+}

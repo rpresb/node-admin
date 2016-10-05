@@ -10,7 +10,7 @@
         '<div class="alert-container" ng-if="alert.display()">',
         '<div class="alert alert-{{ alert.type }}" role="alert">',
         '<i class="fa" ng-class="{ \'fa-exclamation-circle\': (alert.type === \'warning\' || alert.type === \'danger\'), \'fa-check-circle\': alert.type === \'success\' }"></i>',
-        '<p class="alert-text"><b ng-if="alert.title">{{ alert.title }} </b>{{ alert.message }}</p>',
+        '<p class="alert-text"><b ng-if="alert.title">{{ alert.title | translate }} </b>{{ alert.message | translate }}</p>',
         '<i class="fa fa-close alert-close" ng-click="alert.close()"></i>',
         '</div>',
         '</div>'];

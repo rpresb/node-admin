@@ -18,11 +18,21 @@
         };
       },
 
-      save: function(_data) {
-        var data = angular.copy(_data);
+      save: function(order, customer) {
+        var data = angular.copy(order);
+
+        if (customer) {
+          data.customer = customer;
+          data.shippingAddress = customer.address;
+        }
 
         data.items = _filterProductsWithQuantity(data.items);
         data.gifts = _filterProductsWithQuantity(data.gifts);
+
+        if (data.payment && data.payment.paymentType !== 'MONEY') {
+          data.payment.change = null;
+          data.payment.moneyTotal = null;
+        }
 
         var promise;
         if (data._id) {

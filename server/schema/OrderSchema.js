@@ -26,7 +26,9 @@ let OrderSchema = mongoose.Schema({
   },
   payment: {
     discount: { type: Number },
+    moneyTotal: { type: Number },
     total: { type: Number },
+    change: { type: Number },
     paymentType: { type: String }
   },
   origin: {

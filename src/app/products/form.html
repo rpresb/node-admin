@@ -1,5 +1,5 @@
-<form name="vm.productForm" ng-submit="vm.save(vm.data)">
-  <fieldset class="row">
+<form name="vm.productForm" ng-submit="vm.save(vm.product)">
+  <fieldset class="row" ng-if="vm.product._id">
     <div class="col-md-6 col-sm-6 form-group">
       <label>Nome *</label>
       <input
@@ -10,7 +10,7 @@
           size="50"
           autocomplete="off"
           required
-          ng-model="vm.data.name"
+          ng-model="vm.product.name"
           ng-minlength="3"
           maxlength="50">
     </div>
@@ -24,7 +24,7 @@
           size="50"
           autocomplete="off"
           required
-          ng-model="vm.data.price"
+          ng-model="vm.product.price"
           ui-money-mask
           maxlength="50">
     </div>
@@ -34,11 +34,11 @@
           type="checkbox"
           name="gift"
           class="form-control"
-          ng-model="vm.data.gift">
+          ng-model="vm.product.gift">
     </div>
 
   </fieldset>
-  <fieldset class="row">
+  <fieldset class="row" ng-if="vm.product._id">
     <div class="col-md-12">
       <input type="submit"
             ng-disabled="vm.productForm.$invalid"

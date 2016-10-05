@@ -20,7 +20,7 @@
         .then(function(response) {
           vm.data = response.data;
         })
-        .catch(NotificationService.err);
+        .catch(NotificationService.error);
     }
 
     return vm;

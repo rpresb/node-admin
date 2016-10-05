@@ -45,7 +45,10 @@
       },
       handleError: function (response) {
         if (response.status >= 400) {
-          throw new Error(response.data || 'Ocorreu um erro');
+          var data = response.data;
+          var err = new Error(data.message || 'Ocorreu um erro');
+          err.status = status;
+          throw err;
         }
         return response;
       }

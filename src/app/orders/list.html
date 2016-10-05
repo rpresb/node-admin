@@ -29,15 +29,17 @@
   <thead>
     <tr>
       <td>Nome</td>
-      <td>Preço</td>
+      <td>Total</td>
+      <td>Data</td>
     </tr>
   </thead>
   <tbody>
     <tr class="pointer"
       ng-repeat="order in vm.data.items"
       ng-click="state.go('app.order', { id: order._id })">
-      <td>{{ order.name }}</td>
-      <td>{{ order.price }}</td>
+      <td>{{ order.customer.givenName }}</td>
+      <td>{{ order.payment.total | currency }}</td>
+      <td>{{ order.createdAt | date }}</td>
     </tr>
   </tbody>
 </table>
