@@ -1,10 +1,13 @@
 module.exports = function(config) {
   const DEPENDENCIES = require('wiredep')(require('../../package.json').wiredep);
   const APP_FILES = [
+      'tests/angular/before.js',
+      'src/bower_components/angular-mocks/angular-mocks.js',
+
       'src/app/**/*.module.js',
       'src/app/**/*!(module).js',
 
-      'test/angular/**/*.js'
+      'tests/angular/**/*.js'
   ];
 
   var userConfig = {
@@ -37,10 +40,7 @@ module.exports = function(config) {
     }
   };
 
-  userConfig.files = userConfig.files.concat('tests/angular/before.js');
-  userConfig.files = userConfig.files.concat('src/bower_components/angular-mocks/angular-mocks.js');
   userConfig.files = userConfig.files.concat(APP_FILES);
-  userConfig.files = userConfig.files.concat('tests/angular/**/*.js');
 
   userConfig.phantomjsLauncher = {
     exitOnResourceError: true
