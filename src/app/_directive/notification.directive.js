@@ -66,6 +66,9 @@
         $scope.alert = flashMessage;
 
         var $notificationChannel = $rootScope.$on('notificationChannel', function ($event, data) {
+          if (data === 'close') {
+            return flashMessage.close();
+          }
           flashMessage.notify(data);
         });
       }

@@ -24,7 +24,11 @@
       success : _nofity('success'),
       warning : _nofity('warning'),
       error : _nofity('danger'),
-      info : _nofity('info')
+      info : _nofity('info'),
+
+      close: function() {
+        $rootScope.$broadcast('notificationChannel', 'close');
+      }
     };
 
     return service;
